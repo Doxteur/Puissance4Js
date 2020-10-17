@@ -29,20 +29,22 @@
     ];
 
     function placeAColor(a) {
+      
+
       if (a > 6) {
         console.log("Mauvais Numéro");
         return 0;
       }
       console.clear();
       for (let i = 5; i >= 0; i--) {
-        
-        if (plateau[i][a] == 0) {
-          if (i == 0) { /* System a opti si tu veux le faire. Mais en vraie y'en a pas besoins je l'ai fais juste pour avoir le message d'erreur*/
+        if (i == 0) { /* System a opti si tu veux le faire. Mais en vraie y'en a pas besoins je l'ai fais juste pour avoir le message d'erreur*/
                         
-            console.log("Case Pleine");
-           
-          }
-
+                        console.log("Case Pleine");
+                       
+                      }
+            
+        if (plateau[i][a] == 0) {
+       
           plateau[i][a] = whoPlaying; //Place la case a l'emplacement donné donc collone a et ligne "case" i
 
           if (whoPlaying == 1) {
