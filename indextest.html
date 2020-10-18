@@ -1,68 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="index2.css" />
-    <script src="app.js"></script>
-  </head>
 
-  <body>
-    <input type="number" name="a" id="a" /><br />
-    <button onclick="placeAColor(document.getElementById('a').value)">
-      Add
-    </button>
-    <h1 id="playerTurn">Player 1 Turn</h1>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="index2.css" />
+  <script src="app.js"></script>
+</head>
 
-  <script>
-    let whoPlaying = 1;
+<body>
+  <input type="number" name="a" id="a" /><br />
+  <button onclick="placeAColor(document.getElementById('a').value)">
+    Add
+  </button>
+  <h1 id="playerTurn">Player 1 Turn</h1>
+</body>
 
-    var plateau = [
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-    ];
+<script>
+  let whoPlaying = 1;
 
-    function placeAColor(a) {
-      if (a > 6) {
-        console.log("Mauvais Numéro");
-        return 0;
-      }
-      console.clear();
-      for (let i = 5; i >= 0; i--) {   
-        if (i == 0 && plateau[i][a] != 0) {
-          /* System a opti si tu veux le faire. Mais en vraie y'en a pas besoins je l'ai fais juste pour avoir le message d'erreur*/
-          console.log("Case Pleine");
-        }
-        if (plateau[i][a] == 0) {
-          plateau[i][a] = whoPlaying; //Place la case a l'emplacement donné donc collone a et ligne "case" i
+  var plateau = [
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+  ];
 
-          if (whoPlaying == 1) {
-            // Ta compris sa change les tours probalement a optimisé
-            whoPlaying = 2;
-          } else {
-            whoPlaying = 1;
-          }
-          document.getElementById("playerTurn").innerHTML =
-            "Player " + whoPlaying + " Turn"; //Change le text par rapport au tour du joueur
-
-          break;
-        }
-        
-      }
-
-      function checkWin() {
-
-        
-      } // A toi de le faire
-
-      console.log(plateau.join("\n") + "\n\n"); //Permet de mettre le tableau en colonne sinon il est en ligne
+  function placeAColor(a) {
+    if (a > 6) {
+      console.log("Mauvais Numéro");
+      return 0;
     }
-    placeAColor();
-  </script>
+    console.clear();
+    for (let i = 5; i >= 0; i--) {
+      if (i == 0 && plateau[i][a] != 0) {
+        /* System a opti si tu veux le faire. Mais en vraie y'en a pas besoins je l'ai fais juste pour avoir le message d'erreur*/
+        console.log("Case Pleine");
+      }
+      if (plateau[i][a] == 0) {
+        plateau[i][a] = whoPlaying; //Place la case a l'emplacement donné donc collone a et ligne "case" i
+
+        if (whoPlaying == 1) {
+          // Ta compris sa change les tours probalement a optimisé
+          whoPlaying = 2;
+        } else {
+          whoPlaying = 1;
+        }
+        document.getElementById("playerTurn").innerHTML =
+          "Player " + whoPlaying + " Turn"; //Change le text par rapport au tour du joueur
+
+        break;
+      }
+    }
+
+    function checkWin() { } // A toi de le faire
+
+    console.log(plateau.join("\n") + "\n\n"); //Permet de mettre le tableau en colonne sinon il est en ligne
+  }
+
+</script>
+
 </html>
