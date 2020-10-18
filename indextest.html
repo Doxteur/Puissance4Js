@@ -19,7 +19,6 @@
         </button>
       </div>
     </div>
-   
   </body>
 
   <script>
@@ -35,19 +34,20 @@
     ];
 
     function placeAColor(a) {
-      if (a > 8 || a <= 0 ) {
+      if (a > 8 || a <= 0) {
         console.log("Mauvais Numéro");
         return 0;
       }
       console.clear();
 
+      a--;
       for (let i = 5; i >= 0; i--) {
-        if (i == 0 && plateau[i][a- 1] != 0) {
+        if (i == 0 && plateau[i][a] != 0) {
           /* System a opti si tu veux le faire. Mais en vraie y'en a pas besoins je l'ai fais juste pour avoir le message d'erreur*/
           console.log("Case Pleine");
         }
-        if (plateau[i][a -1 ] == 0) {
-          plateau[i][ a - 1 ] = whoPlaying; //Place la case a l'emplacement donné donc collone a et ligne "case" i
+        if (plateau[i][a] == 0) {
+          plateau[i][a] = whoPlaying; //Place la case a l'emplacement donné donc collone a et ligne "case" i
 
           if (whoPlaying == 1) {
             // Ta compris sa change les tours probalement a optimisé
@@ -68,7 +68,5 @@
       console.log(plateau.join("\n") + "\n\n"); //Permet de mettre le tableau en colonne sinon il est en ligne
     }
     function checkWin() {} // A toi de le faire
-   
   </script>
-  
 </html>
