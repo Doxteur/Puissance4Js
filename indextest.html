@@ -35,6 +35,8 @@
       return 0;
     }
     console.clear();
+    console.log(plateau.join("\n") + "\n\n"); //Permet de mettre le tableau en colonne sinon il est en ligne
+
     for (let i = 5; i >= 0; i--) {
       if (i == 0 && plateau[i][a] != 0) {
         /* System a opti si tu veux le faire. Mais en vraie y'en a pas besoins je l'ai fais juste pour avoir le message d'erreur*/
@@ -58,7 +60,6 @@
 
     function checkWin() { } // A toi de le faire
 
-    console.log(plateau.join("\n") + "\n\n"); //Permet de mettre le tableau en colonne sinon il est en ligne
   }
 
 </script>
