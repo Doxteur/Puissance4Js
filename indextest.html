@@ -24,7 +24,6 @@
 
 <script>
   let whoPlaying = 1;
-  let calculateNumber = 0;
   var plateau = [
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
@@ -71,13 +70,19 @@
   function checkWin() { // A toi de le faire Fin du coup je l'ai fais sauf diago
     for (let i = 0; i <= 5; i++) {
       for (let j = 0; j <= 6; j++) {
-        if (i >= 0) {
-          if (plateau[i][j] == whoPlaying && plateau[i][j + 1] == whoPlaying && plateau[i][j + 2] == 1 && plateau[i][j + 3] == whoPlaying || plateau[i][j] == whoPlaying && plateau[i - 1][j] == whoPlaying && plateau[i - 2][j] == whoPlaying && plateau[i - 3][j] == whoPlaying) {
-            console.log("Player " + whoPlaying + " Won");
-            //Premier numéro == ligne deusieme numéro collone
-            return 1;
-          }
+        
+        if (plateau[i][j] == whoPlaying && plateau[i][j + 1] == whoPlaying && plateau[i][j + 2] == 1 && plateau[i][j + 3] == whoPlaying ) {
+          console.log("Player " + whoPlaying + " Won");
+          //Premier numéro == ligne deusieme numéro collone
+          return 1;
         }
+        if(i >= 3){
+        if (plateau[i][j] == whoPlaying && plateau[i - 1][j] == whoPlaying && plateau[i - 2][j] == whoPlaying && plateau[i - 3][j] == whoPlaying){
+          console.log("Player " + whoPlaying + " Won");
+          //Check Vertical
+          return 1;
+        }
+      }
       }
     }
   } 
