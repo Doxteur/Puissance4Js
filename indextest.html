@@ -35,7 +35,6 @@
       return 0;
     }
     console.clear();
-    console.log(plateau.join("\n") + "\n\n"); //Permet de mettre le tableau en colonne sinon il est en ligne
 
     for (let i = 5; i >= 0; i--) {
       if (i == 0 && plateau[i][a] != 0) {
@@ -51,12 +50,18 @@
         } else {
           whoPlaying = 1;
         }
-        document.getElementById("playerTurn").innerHTML =
-          "Player " + whoPlaying + " Turn"; //Change le text par rapport au tour du joueur
-
+        document.getElementById("playerTurn").innerHTML = ("Player " + whoPlaying + " Turn"); //Change le text par rapport au tour du joueur
+        if(whoPlaying == 1){
+        document.getElementById("playerTurn").style.color = 'Red';
+      }else{
+        document.getElementById("playerTurn").style.color = 'Blue';
+        
+      }
         break;
       }
+
     }
+    console.log(plateau.join("\n") + "\n\n"); //Permet de mettre le tableau en colonne sinon il est en ligne
 
     function checkWin() { } // A toi de le faire
 
