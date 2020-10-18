@@ -1,72 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="index2.css" />
-    <script src="app.js"></script>
-  </head>
 
-  <body>
-    <div id="table">
-      <div id="cell">
-        <h1 id="playerTurn">Player 1 Turn</h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="index2.css" />
+  <script src="app.js"></script>
+</head>
 
-        <input type="number" name="a" id="a" /><br />
-        <button onclick="placeAColor(document.getElementById('a').value)">
-          Add
-        </button>
-      </div>
+<body>
+  <div id="table">
+    <div id="cell">
+      <h1 id="playerTurn">Player 1 Turn</h1>
+
+      <input type="number" name="a" id="a" /><br />
+      <button onclick="placeAColor(document.getElementById('a').value)">
+        Add
+      </button>
     </div>
-  </body>
+  </div>
+</body>
 
-  <script>
-    let whoPlaying = 1;
+<script>
+  let whoPlaying = 1;
+  let calculateNumber = 0;
+  var plateau = [
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+  ];
 
-    var plateau = [
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-    ];
-
-    function placeAColor(a) {
-      if (a > 8 || a <= 0) {
-        console.log("Mauvais Numéro");
-        return 0;
-      }
-      console.clear();
-
-      a--;
-      for (let i = 5; i >= 0; i--) {
-        if (i == 0 && plateau[i][a] != 0) {
-          /* System a opti si tu veux le faire. Mais en vraie y'en a pas besoins je l'ai fais juste pour avoir le message d'erreur*/
-          console.log("Case Pleine");
-        }
-        if (plateau[i][a] == 0) {
-          plateau[i][a] = whoPlaying; //Place la case a l'emplacement donné donc collone a et ligne "case" i
-
-          if (whoPlaying == 1) {
-            // Ta compris sa change les tours probalement a optimisé
-            whoPlaying = 2;
-          } else {
-            whoPlaying = 1;
-          }
-          document.getElementById("playerTurn").innerHTML =
-            "Player " + whoPlaying + " Turn"; //Change le text par rapport au tour du joueur
-          if (whoPlaying == 1) {
-            document.getElementById("playerTurn").style.color = "Red";
-          } else {
-            document.getElementById("playerTurn").style.color = "Blue";
-          }
-          break;
-        }
-      }
-      console.log(plateau.join("\n") + "\n\n"); //Permet de mettre le tableau en colonne sinon il est en ligne
+  function placeAColor(a) {
+    if (a > 8 || a <= 0) {
+      console.log("Mauvais Numéro");
+      return 0;
     }
-    function checkWin() {} // A toi de le faire
-  </script>
+    a--;
+    for (let i = 5; i >= 0; i--) {
+      if (i == 0 && plateau[i][a] != 0) {
+        /* System a opti si tu veux le faire. Mais en vraie y'en a pas besoins je l'ai fais juste pour avoir le message d'erreur*/
+        console.log("Case Pleine");
+      }
+      if (plateau[i][a] == 0) {
+        plateau[i][a] = whoPlaying; //Place la case a l'emplacement donné donc collone a et ligne "case" i
+        checkWin();
+
+
+        if (whoPlaying == 1) {
+          // Ta compris sa change les tours probalement a optimisé
+          whoPlaying = 2;
+        } else {
+          whoPlaying = 1;
+        }
+        document.getElementById("playerTurn").innerHTML =
+          "Player " + whoPlaying + " Turn"; //Change le text par rapport au tour du joueur
+        if (whoPlaying == 1) {
+          document.getElementById("playerTurn").style.color = "Red";
+        } else {
+          document.getElementById("playerTurn").style.color = "Blue";
+        }
+        break;
+      }
+    }
+    console.log(plateau.join("\n") + "\n\n"); //Permet de mettre le tableau en colonne sinon il est en ligne
+  }
+  function checkWin() {
+    for (let i = 0; i <= 5; i++) {
+      for(let j = 0 ; j <= 6; j++){
+        if (plateau[i][j] == 1 && plateau[i][j + 1] == 1 && plateau[i][j + 2] == 1 && plateau[i][j + 3] == 1) {
+          console.log("win");
+          //Premier numéro == ligne deusieme numéro collone
+        }
+      }
+
+    }
+
+
+  } // A toi de le faire
+</script>
+
 </html>
