@@ -70,9 +70,9 @@
   function checkWin() { // A toi de le faire Fin du coup je l'ai fais sauf diago
     for (let i = 0; i <= 5; i++) {
       for (let j = 0; j <= 6; j++) {
-
+        
         //Premier numéro == ligne deusieme numéro collone
-        if (plateau[i][j] == whoPlaying && plateau[i][j + 1] == whoPlaying && plateau[i][j + 2] == 1 && plateau[i][j + 3] == whoPlaying) {
+        if (plateau[i][j] == whoPlaying && plateau[i][j + 1] == whoPlaying && plateau[i][j + 2] == whoPlaying && plateau[i][j + 3] == whoPlaying) {
           console.log("Player " + whoPlaying + " Won");
           //Check Horizontal
           return 1;
@@ -85,6 +85,7 @@
           }
         }
       }
+      
     }
   } 
 </script>
