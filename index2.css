@@ -1,20 +1,24 @@
-td{
-    border: solid black 1px ;
-    width: 140px;
-    height: 140px;
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: wheat;
 }
 h1{
     color: red;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
-  
+    font-size: 30px;
 }
 #table{
-    background-color: lightslategray;
-    width: 300px;
-    height: 300px;
+    background-color: #2C5E8F;
+    min-width: 500px;
+    min-height: 500px;
     display: table;
-   
+    margin: auto;
+    margin-top: 10%;
+    
 }
 #cell{
     text-align: center;
@@ -22,6 +26,10 @@ h1{
     vertical-align: middle;
 }
 input{
-    font-size: 20px;
+    font-size: 30px;
     text-align: center;
+    overflow: hidden;
+}
+button{
+    font-size: 30px;
 }
