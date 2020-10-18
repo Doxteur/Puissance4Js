@@ -57,8 +57,7 @@
         } else {
           whoPlaying = 1;
         }
-        document.getElementById("playerTurn").innerHTML =
-          "Player " + whoPlaying + " Turn"; //Change le text par rapport au tour du joueur
+        document.getElementById("playerTurn").innerHTML = "Player " + whoPlaying + " Turn"; //Change le text par rapport au tour du joueur
         if (whoPlaying == 1) {
           document.getElementById("playerTurn").style.color = "Red";
         } else {
@@ -69,22 +68,19 @@
     }
     console.log(plateau.join("\n") + "\n\n"); //Permet de mettre le tableau en colonne sinon il est en ligne
   }
-  function checkWin() {
+  function checkWin() { // A toi de le faire Fin du coup je l'ai fais sauf diago
     for (let i = 0; i <= 5; i++) {
-      for(let j = 0 ; j <= 6; j++){
-        if(i > 4){
-        if (plateau[i][j] == whoPlaying && plateau[i][j + 1] == whoPlaying && plateau[i][j + 2] == 1 && plateau[i][j + 3] == whoPlaying || plateau[i][j] == whoPlaying && plateau[i - 1][j] == whoPlaying && plateau[i - 2][j] == whoPlaying && plateau[i - 3][j] == whoPlaying) {
-          console.log( "Player " + whoPlaying + " Won");
-          //Premier numéro == ligne deusieme numéro collone
-
+      for (let j = 0; j <= 6; j++) {
+        if (i >= 0) {
+          if (plateau[i][j] == whoPlaying && plateau[i][j + 1] == whoPlaying && plateau[i][j + 2] == 1 && plateau[i][j + 3] == whoPlaying || plateau[i][j] == whoPlaying && plateau[i - 1][j] == whoPlaying && plateau[i - 2][j] == whoPlaying && plateau[i - 3][j] == whoPlaying) {
+            console.log("Player " + whoPlaying + " Won");
+            //Premier numéro == ligne deusieme numéro collone
+            return 1;
+          }
         }
       }
     }
-    }
-    
-
-
-  } // A toi de le faire
+  } 
 </script>
 
 </html>
