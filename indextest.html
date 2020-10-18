@@ -32,6 +32,7 @@
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
   ];
+  console.log(plateau.join("\n") + "\n\n"); //Permet de mettre le tableau en colonne sinon il est en ligne
 
   function placeAColor(a) {
     if (a > 8 || a <= 0) {
@@ -70,7 +71,7 @@
   function checkWin() { // A toi de le faire Fin du coup je l'ai fais sauf diago
     for (let i = 0; i <= 5; i++) {
       for (let j = 0; j <= 6; j++) {
-        
+
         //Premier numéro == ligne deusieme numéro collone
         if (plateau[i][j] == whoPlaying && plateau[i][j + 1] == whoPlaying && plateau[i][j + 2] == whoPlaying && plateau[i][j + 3] == whoPlaying) {
           console.log("Player " + whoPlaying + " Won");
@@ -79,13 +80,18 @@
         }
         if (i >= 3) {
           if (plateau[i][j] == whoPlaying && plateau[i - 1][j] == whoPlaying && plateau[i - 2][j] == whoPlaying && plateau[i - 3][j] == whoPlaying) {
-            console.log("Player " + whoPlaying + " Won");
             //Check Vertical
+            console.log("Player " + whoPlaying + " Won");
             return 1;
           }
         }
+        /* if(){
+
+        }
+        //Check Diagonal
+         */
       }
-      
+
     }
   } 
 </script>
