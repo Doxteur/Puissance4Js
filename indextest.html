@@ -11,6 +11,9 @@
 
 <body>
   <div id="table">
+    <div id="wonText">
+   
+    </div>
     <div id="cell">
       <h1 id="playerTurn">Player 1 Turn</h1>
 
@@ -24,6 +27,7 @@
 
 <script>
   let whoPlaying = 1;
+  let canPlay = true;
   var plateau = [
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
@@ -35,6 +39,7 @@
   console.log(plateau.join("\n") + "\n\n"); //Permet de mettre le tableau en colonne sinon il est en ligne
 
   function placeAColor(a) {
+    if(canPlay == true){
     if (a > 8 || a <= 0) {
       console.log("Mauvais Numéro");
       return 0;
@@ -68,20 +73,20 @@
     }
     console.log(plateau.join("\n") + "\n\n"); //Permet de mettre le tableau en colonne sinon il est en ligne
   }
+}
   function checkWin() { // A toi de le faire Fin du coup je l'ai fais sauf diago
     for (let i = 0; i <= 5; i++) {
       for (let j = 0; j <= 6; j++) {
 
         //Premier numéro == ligne deusieme numéro collone
         if (plateau[i][j] == whoPlaying && plateau[i][j + 1] == whoPlaying && plateau[i][j + 2] == whoPlaying && plateau[i][j + 3] == whoPlaying) {
-          console.log("Player " + whoPlaying + " Won");
-          //Check Horizontal
+          Won();          
           return 1;
         }
         if (i >= 3) {
           if (plateau[i][j] == whoPlaying && plateau[i - 1][j] == whoPlaying && plateau[i - 2][j] == whoPlaying && plateau[i - 3][j] == whoPlaying) {
             //Check Vertical
-            console.log("Player " + whoPlaying + " Won");
+            Won();
             return 1;
           }
         }
@@ -94,6 +99,15 @@
 
     }
   } 
+  function Won(){
+    console.log("You won !!");
+    canPlay = false;
+    document.getElementById("cell").style.display = "none";
+    let theDiv = document.getElementById("wonText");
+    theDiv.innerHTML += "Player " + whoPlaying + " Won"; 
+    theDiv.style.border = "solid yellow 15px"
+    
+  }
 </script>
 
 </html>
