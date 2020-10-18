@@ -11,16 +11,23 @@
 
 <body>
   <div id="table">
+
     <div id="wonText">
-   
+
+
     </div>
     <div id="cell">
+      <button onclick="replay()" id="replayButton"> Replay </button>
+      <div id="disapear">
+
       <h1 id="playerTurn">Player 1 Turn</h1>
 
       <input type="number" name="a" id="a" /><br />
-      <button onclick="placeAColor(document.getElementById('a').value)">
+      
+      <button onclick="placeAColor(document.getElementById('a').value)" id="placeAColor">
         Place
       </button>
+    </div>
     </div>
   </div>
 </body>
@@ -102,11 +109,19 @@
   function Won(){
     console.log("You won !!");
     canPlay = false;
-    document.getElementById("cell").style.display = "none";
+    document.getElementById("disapear").style.display = "none";
+    document.getElementById("replayButton").style.position = "absolute";
+    document.getElementById("replayButton").style.left = "47.5%";
+    document.getElementById("replayButton").style.marginTop = "40px";
+
+    
     let theDiv = document.getElementById("wonText");
     theDiv.innerHTML += "Player " + whoPlaying + " Won"; 
     theDiv.style.border = "solid yellow 15px"
     
+  }
+  function replay(){
+    document.location.reload(true);
   }
 </script>
 
