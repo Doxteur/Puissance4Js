@@ -17,14 +17,18 @@ h1 {
   min-width: 500px;
   min-height: 500px;
   display: table;
-  margin: auto;
-  margin-top: 10%;
+  margin: 10%;
+  margin-top: 5%;
+  float: left;
+
   
 }
 #cell {
+  
   text-align: center;
   display: table-cell;
   vertical-align: middle;
+ 
 }
 #wonText {
   font-size: 30px;
@@ -49,4 +53,16 @@ button {
 }
 button:active{
     background-color: red;
+}
+td{
+  min-width: 120px;
+  min-height: 120px;
+ 
+}
+table{
+  position: relative;
+  margin-top: 5%;
+
+  min-height: 720px;
+  
 }
