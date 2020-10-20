@@ -9,14 +9,11 @@
 </head>
 
 <body>
-  
+
   <div id="table">
-
+     
     <div id="wonText">
-
-
     </div>
-
     <div id="cell">
       <button onclick="replay()" id="replayButton"> Replay </button>
       <div id="disapear">
@@ -29,8 +26,16 @@
           Place
         </button>
       </div>
+      <div id="download">
+      <a href="Projet.rar" download="w3logo">
+        <h2>Download Project</h2>
+       </a>
+      </div>
     </div>
   </div>
+   
+
+ 
 </body>
 
 <script>
@@ -46,18 +51,18 @@
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
   ];
-  console.log(plateau.join("\n") + "\n\n"); //Permet de mettre le tableau en colonne sinon il est en ligne
+  console.log(plateau.join("\n") + "\n\n"); //Permet de mettre le tableau en colonne dans la console.
 
-  function placeAColor(a) {
-   
+  function placeAColor(a) { //Permet de placer un nombre dans une collone a 
+
     plateauRemplie();
     if (canPlay == true) {
       if (a > 8 || a <= 0) {
         console.log("Mauvais Numéro");
         return 0;
       }
-      console.clear();
-      a--;
+      console.clear(); 
+      a--; //Permet de de pouvoir mettre 1 en collone et d'avoir la collone 1 pas 0.
       for (let i = 5; i >= 0; i--) {
         if (i == 0 && plateau[i][a] != 0) {
           /* System a opti si tu veux le faire. Mais en vraie y'en a pas besoins je l'ai fais juste pour avoir le message d'erreur*/
@@ -65,7 +70,7 @@
         }
         if (plateau[i][a] == 0) {
           plateau[i][a] = whoPlaying; //Place la case a l'emplacement donné donc collone a et ligne "case" i
-         
+
           let newi = i;
           newi = i.toString();
           let newa = a;
@@ -145,11 +150,11 @@
         }
       }
     }
-    tableauRemplie();
+    plateauRemplieChangeDesign();
 
   }
 
-  function tableauRemplie() {
+  function plateauRemplieChangeDesign() {
 
     console.log("Tableau Remplie");
     canPlay = false;
@@ -166,47 +171,36 @@
   }
   function generate_table() {
 
-        // get the reference for the body
-        var body = document.getElementsByTagName("body")[0];
+    var body = document.getElementsByTagName("body")[0];
 
-        // creates a <table> element and a <tbody> element
-        var tbl = document.createElement("table");
-        var tblBody = document.createElement("tbody");
+    var tbl = document.createElement("table");
+    var tblBody = document.createElement("tbody");
 
-        // creating all cells
-        for (var i = 0; i < 6; i++) {
-            // creates a table row
-            var row = document.createElement("tr");
-            row.setAttribute("id", i + 1);
+    for (var i = 0; i < 6; i++) {
 
-            for (var j = 0; j < 7; j++) {
+      var row = document.createElement("tr");
+      row.setAttribute("id", i + 1);
 
-                // Create a <td> element and a text node, make the text
-                // node the contents of the <td>, and put the <td> at
-                // the end of the table row
-                var cell = document.createElement("td");
-              
-                 let tempi = i.toString();
-                let tempJ = j.toString();
-                let newvar = tempi.concat(tempJ)
-                cell.setAttribute("id", newvar);
+      for (var j = 0; j < 7; j++) {
+        var cell = document.createElement("td");
+        //Permet de donner un id a chaque td comme ca il sont accessible. 
+        let tempi = i.toString();
+        let tempJ = j.toString();
+        let newvar = tempi.concat(tempJ)
+        cell.setAttribute("id", newvar);
 
-                var cellText = document.createTextNode(" ");
-                cell.appendChild(cellText);
-                row.appendChild(cell);
-            }
+        var cellText = document.createTextNode(" ");
+        cell.appendChild(cellText);
+        row.appendChild(cell);
+      }
 
-            // add the row to the end of the table body
-            tblBody.appendChild(row);
-        }
-
-        // put the <tbody> in the <table>
-        tbl.appendChild(tblBody);
-        // appends <table> into <body>
-        body.appendChild(tbl);
-        // sets the border attribute of tbl to 2;
-        tbl.setAttribute("border", "2");
+      tblBody.appendChild(row);
     }
+
+    tbl.appendChild(tblBody);
+    body.appendChild(tbl);
+    tbl.setAttribute("border", "2");
+  }
 
 </script>
 
