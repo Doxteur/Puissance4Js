@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
   <link rel="stylesheet" href="index2.css" />
-  <script src="app.js"></script>
 </head>
 
 <body>
@@ -20,14 +19,14 @@
       <button onclick="replay()" id="replayButton"> Replay </button>
       <div id="disapear">
 
-      <h1 id="playerTurn">Player 1 Turn</h1>
+        <h1 id="playerTurn">Player 1 Turn</h1>
 
-      <input type="number" name="a" id="a" /><br />
-      
-      <button onclick="placeAColor(document.getElementById('a').value)" id="placeAColor">
-        Place
-      </button>
-    </div>
+        <input type="number" name="a" id="a" /><br />
+
+        <button onclick="placeAColor(document.getElementById('a').value)" id="placeAColor">
+          Place
+        </button>
+      </div>
     </div>
   </div>
 </body>
@@ -35,6 +34,7 @@
 <script>
   let whoPlaying = 1;
   let canPlay = true;
+
   var plateau = [
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
@@ -46,48 +46,49 @@
   console.log(plateau.join("\n") + "\n\n"); //Permet de mettre le tableau en colonne sinon il est en ligne
 
   function placeAColor(a) {
-    if(canPlay == true){
-    if (a > 8 || a <= 0) {
-      console.log("Mauvais Numéro");
-      return 0;
-    }
-    console.clear();
-    a--;
-    for (let i = 5; i >= 0; i--) {
-      if (i == 0 && plateau[i][a] != 0) {
-        /* System a opti si tu veux le faire. Mais en vraie y'en a pas besoins je l'ai fais juste pour avoir le message d'erreur*/
-        console.log("Case Pleine");
+    plateauRemplie();
+    if (canPlay == true) {
+      if (a > 8 || a <= 0) {
+        console.log("Mauvais Numéro");
+        return 0;
       }
-      if (plateau[i][a] == 0) {
-        plateau[i][a] = whoPlaying; //Place la case a l'emplacement donné donc collone a et ligne "case" i
-        checkWin();
+      console.clear();
+      a--;
+      for (let i = 5; i >= 0; i--) {
+        if (i == 0 && plateau[i][a] != 0) {
+          /* System a opti si tu veux le faire. Mais en vraie y'en a pas besoins je l'ai fais juste pour avoir le message d'erreur*/
+          console.log("Case Pleine");
+        }
+        if (plateau[i][a] == 0) {
+          plateau[i][a] = whoPlaying; //Place la case a l'emplacement donné donc collone a et ligne "case" i
+          checkWin();
 
 
-        if (whoPlaying == 1) {
-          // Ta compris sa change les tours probalement a optimisé
-          whoPlaying = 2;
-        } else {
-          whoPlaying = 1;
+          if (whoPlaying == 1) {
+            // Ta compris sa change les tours probalement a optimisé
+            whoPlaying = 2;
+          } else {
+            whoPlaying = 1;
+          }
+          document.getElementById("playerTurn").innerHTML = "Player " + whoPlaying + " Turn"; //Change le text par rapport au tour du joueur
+          if (whoPlaying == 1) {
+            document.getElementById("playerTurn").style.color = "Red";
+          } else {
+            document.getElementById("playerTurn").style.color = "Yellow";
+          }
+          break;
         }
-        document.getElementById("playerTurn").innerHTML = "Player " + whoPlaying + " Turn"; //Change le text par rapport au tour du joueur
-        if (whoPlaying == 1) {
-          document.getElementById("playerTurn").style.color = "Red";
-        } else {
-          document.getElementById("playerTurn").style.color = "Yellow";
-        }
-        break;
       }
+      console.log(plateau.join("\n") + "\n\n"); //Permet de mettre le tableau en colonne sinon il est en ligne
     }
-    console.log(plateau.join("\n") + "\n\n"); //Permet de mettre le tableau en colonne sinon il est en ligne
   }
-}
   function checkWin() { // A toi de le faire Fin du coup je l'ai fais sauf diago
     for (let i = 0; i <= 5; i++) {
       for (let j = 0; j <= 6; j++) {
 
         //Premier numéro == ligne deusieme numéro collone
         if (plateau[i][j] == whoPlaying && plateau[i][j + 1] == whoPlaying && plateau[i][j + 2] == whoPlaying && plateau[i][j + 3] == whoPlaying) {
-          Won();          
+          Won();
           return 1;
         }
         if (i >= 3) {
@@ -96,17 +97,17 @@
             Won();
             return 1;
           }
+          if (plateau[i][j] == whoPlaying && plateau[i - 1][j - 1] == whoPlaying && plateau[i - 2][j - 2] == whoPlaying && plateau[i - 3][j - 3] == whoPlaying || plateau[i][j] == whoPlaying && plateau[i - 1][j + 1] == whoPlaying && plateau[i - 2][j + 2] == whoPlaying && plateau[i - 3][j + 3] == whoPlaying) {
+            Won();
+            return 1;
+          }
+          //Check Diagonal
         }
-        /* if(){
-
-        }
-        //Check Diagonal
-        */
       }
-
     }
-  } 
-  function Won(){
+  }
+  function Won() {
+
     console.log("You won !!");
     canPlay = false;
     document.getElementById("disapear").style.display = "none";
@@ -114,15 +115,43 @@
     document.getElementById("replayButton").style.left = "47.5%";
     document.getElementById("replayButton").style.marginTop = "40px";
 
-    
+
     let theDiv = document.getElementById("wonText");
-    theDiv.innerHTML += "Player " + whoPlaying + " Won"; 
+    theDiv.innerHTML += "Player " + whoPlaying + " Won";
     theDiv.style.border = "solid yellow 15px"
-    
+
   }
-  function replay(){
+  function replay() {
     document.location.reload(true);
   }
+  function plateauRemplie() {
+    for (let i = 0; i <= 5; i++) {
+      for (let j = 0; j <= 6; j++) {
+        if (plateau[i][j] == 0) {
+          return 0;
+        }
+      }
+    }
+    tableauRemplie();
+
+  }
+
+  function tableauRemplie() {
+
+    console.log("Tableau Remplie");
+    canPlay = false;
+    document.getElementById("disapear").style.display = "none";
+    document.getElementById("replayButton").style.position = "absolute";
+    document.getElementById("replayButton").style.left = "47.5%";
+    document.getElementById("replayButton").style.marginTop = "40px";
+
+
+    let theDiv = document.getElementById("wonText");
+    theDiv.innerHTML += "Tableau Complet";
+    theDiv.style.border = "solid yellow 15px"
+
+  }
+
 </script>
 
 </html>
