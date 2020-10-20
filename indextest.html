@@ -5,13 +5,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
-  <link rel="stylesheet" href="index2.css"/>
+  <link rel="stylesheet" href="index2.css" />
 </head>
 
 <body>
 
   <div id="table">
-     
+
     <div id="wonText">
     </div>
     <div id="cell">
@@ -27,33 +27,37 @@
         </button>
       </div>
       <div id="download">
-      <a href="Projet.rar" download="Projet.rar">
-        <h2>Download Project</h2>
-       </a>
+        <a href="Projet.rar" download="Projet.rar">
+          <h2>Download Project</h2>
+        </a>
       </div>
-      <style>a {
-        color: white;
-        font-size: 25px;
-        text-decoration: none;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: bold;
-      }
-      #download {
-        border: 5px solid transparent;
-      
-        width: 70%;
-        margin: auto;
-        transition: ease-in-out 0.5s ;
-      }
-      #download:hover {
-        border: 5px solid yellow;
-        transform: scale(1.05);
-      }</style>
+      <style>
+        a {
+          color: white;
+          font-size: 25px;
+          text-decoration: none;
+          font-family: Arial, Helvetica, sans-serif;
+          font-weight: bold;
+        }
+
+        #download {
+          border: 5px solid transparent;
+
+          width: 70%;
+          margin: auto;
+          transition: ease-in-out 0.5s;
+        }
+
+        #download:hover {
+          border: 5px solid yellow;
+          transform: scale(1.05);
+        }
+      </style>
     </div>
   </div>
-   
 
- 
+
+
 </body>
 
 <script>
@@ -79,7 +83,7 @@
         console.log("Mauvais Numéro");
         return 0;
       }
-      console.clear(); 
+      console.clear();
       a--; //Permet de de pouvoir mettre 1 en collone et d'avoir la collone 1 pas 0.
       for (let i = 5; i >= 0; i--) {
         if (i == 0 && plateau[i][a] != 0) {
